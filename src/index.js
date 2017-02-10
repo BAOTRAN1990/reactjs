@@ -1,3 +1,6 @@
+import React from 'react';
+import {render} from 'react-dom';
+
 // Practice with props
 function WelcomeWithProps(props) {
   return (
@@ -8,13 +11,6 @@ function WelcomeWithProps(props) {
     </div>
   );
 }
-
-const element = <WelcomeWithProps inputName = "Bao Tran" currentDate={new Date()}/>;
-
-ReactDOM.render(
-  element,
-  document.getElementById('with_props')
-);
 
 // Practice with state
 class WelcomeWithState extends React.Component {
@@ -33,11 +29,6 @@ class WelcomeWithState extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <WelcomeWithState inputName="Bao Tran"/>,
-  document.getElementById('with_state')
-);
 
 // state change
 class WelcomeWithStateChange extends React.Component {
@@ -66,33 +57,17 @@ class WelcomeWithStateChange extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <WelcomeWithStateChange/>,
-  document.getElementById('state_change')
-);
-
-// sub-component
-function Component(props) {
+function RootComponent(props) {
   return (
     <div>
-      <h2>Here is component {props.version}.</h2>
+      <WelcomeWithProps inputName = "Bao Tran" currentDate={new Date()}/>
+      <WelcomeWithState inputName="Bao Tran"/>
+      <WelcomeWithStateChange/>
     </div>
   );
 }
 
-function CombineSubComponent(props) {
-  return (
-    <div>
-      <h1>Sub Components</h1>
-      <Component version = "1"/>
-      <Component version = "2"/>
-    </div>
-  );
-}
-
-const combinedElement = <CombineSubComponent/>;
-
-ReactDOM.render(
-  combinedElement,
-  document.getElementById('sub_component')
+render(
+  <RootComponent/>,
+  document.getElementById('root')
 );
