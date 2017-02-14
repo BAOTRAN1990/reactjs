@@ -3,6 +3,7 @@ import { Router, Route, Link, IndexRoute, hashHistory, IndexLink } from 'react-r
 
 import TaskDetail from './TaskDetail'
 import HomePage from './HomePage'
+import Create from './Create'
 
 class App extends Component {
   render() {
@@ -32,8 +33,6 @@ const Container = (props) => (
     {props.children}
   </div>
 )
-
-const Create = () => <h1>Create new task here</h1>
 
 const NotFound = () => <h1>404.. This page is not found!</h1>
 

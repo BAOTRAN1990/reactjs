@@ -6,7 +6,7 @@ var taskID = 2;
 
 export function createNewTask(task) {
 	taskID += 1;
-	LISTITEMS.push({
+	TASKLIST.push({
 		taskID: taskID,
 		name: task.name,
     createdDate: task.createdDate,

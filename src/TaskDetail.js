@@ -3,7 +3,7 @@ import {render} from 'react-dom'
 
 import TASKLIST from './TaskList'
 
-class TaskDetail extends React.Component {
+class TaskDetail extends Component {
   render() {
     const {taskID} = this.props.routeParams;
     const selectedTask = TASKLIST.find(t => t.taskID == taskID);

@@ -4,11 +4,11 @@ import {Link} from 'react-router'
 
 import TASKLIST from './TaskList'
 
-class HomePage extends React.Component {
+class HomePage extends Component {
   render() {
     var rows = [];
     TASKLIST.forEach(task => {
-      rows.push(<li><Link to={`/taskdetail/${task.taskID}`}>{task.name}</Link></li>);
+      rows.push(<li key={task.taskID}><Link to={`/taskdetail/${task.taskID}`}>{task.name}</Link></li>);
     });
     return (
       <div>
