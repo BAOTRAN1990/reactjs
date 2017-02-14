@@ -23,7 +23,7 @@ class Create extends Component{
 
   handlSaveTask() {
     createNewTask(this.state);
-    alert('Save completed!!!')
+    alert('Save completed!!!');
   }
 
   handleChangeName(event) {
