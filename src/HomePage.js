@@ -2,20 +2,34 @@ import React, { Component } from 'react'
 import {render} from 'react-dom'
 import {Link} from 'react-router'
 
+import { connect } from 'react-redux';
+
 import TASKLIST from './TaskList'
 
 class HomePage extends Component {
   render() {
+    const taskList = this.props.taskList;
     var rows = [];
     TASKLIST.forEach(task => {
       rows.push(<li key={task.taskID}><Link to={`/taskdetail/${task.taskID}`}>{task.name}</Link></li>);
     });
     return (
       <div>
-        <ul>{rows}</ul>
+        <ul>
+          taskList.map(task => <li key={task.taskID}><Link to={`/taskdetail/${task.taskID}`}>{task.name}</Link></li>)
+        </ul>
       </div>
     )
   }
 }
 
-export default HomePage;
+const mapStateToProps = (state) => {
+  return {
+    taskList: state.taskListReducer
+  }
+}
+
+const HomeContainer = connect()(HomePage);
+
+
+export default HomeContainer;

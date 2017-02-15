@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
 import {render} from 'react-dom'
 
+import { connect } from 'react-redux';
+
 import { createNewTask } from './TaskList'
+
+import createNewTaskAction from './CreateAction'
 
 class Create extends Component{
   constructor() {
     super();
 
-    this.state = {
-      name: '',
-      createdDate: '',
-      effort: '',
-      status: ''
-    };
+    // this.state = {
+    //   name: '',
+    //   createdDate: '',
+    //   effort: '',
+    //   status: ''
+    // };
 
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeCreatedDate = this.handleChangeCreatedDate.bind(this);
@@ -22,7 +26,9 @@ class Create extends Component{
   }
 
   handlSaveTask() {
-    createNewTask(this.state);
+    // Get values from Input Form
+    const actionObj = createNewTaskAction('Task name 01', 'Task Description 01');
+    this.props.dispatch(actionObj);
     alert('Save completed!!!');
   }
 
@@ -72,4 +78,6 @@ class Create extends Component{
   }
 }
 
-export default Create;
+const CreateContainer = connect()(Create);
+
+export default CreateContainer;
