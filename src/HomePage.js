@@ -4,15 +4,9 @@ import {Link} from 'react-router'
 
 import { connect } from 'react-redux';
 
-import TASKLIST from './TaskList'
-
 class HomePage extends Component {
   render() {
     const taskList = this.props.taskList;
-    var rows = [];
-    TASKLIST.forEach(task => {
-      rows.push(<li key={task.taskID}><Link to={`/taskdetail/${task.taskID}`}>{task.name}</Link></li>);
-    });
     return (
       <div>
         <ul>

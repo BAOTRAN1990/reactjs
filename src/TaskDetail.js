@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import {render} from 'react-dom'
 
-import TASKLIST from './TaskList'
+import { connect } from 'react-redux';
 
 class TaskDetail extends Component {
   render() {
     const {taskID} = this.props.routeParams;
-    const selectedTask = TASKLIST.find(t => t.taskID == taskID);
+    const selectedTask = this.props.taskList.find(t => t.taskID == taskID);
 
     return (
       <div>
@@ -21,4 +21,12 @@ class TaskDetail extends Component {
   }
 }
 
-export default TaskDetail;
+const mapStateToProps = (state) => {
+	return {
+		taskList : state.taskListReducer
+	}
+}
+
+const HomeContainer = connect()(TaskDetail);
+
+export default HomeContainer;
