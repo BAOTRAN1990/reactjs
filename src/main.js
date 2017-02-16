@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
 import { Router, Route, Link, IndexRoute, hashHistory, IndexLink } from 'react-router'
+import { Provider } from 'react-redux'
 
 import TaskDetail from './TaskDetail'
-import HomePage from './HomePage'
+import TaskList from './TaskList'
 import Create from './Create'
+import store from './TaskStore'
 
 class App extends Component {
   render() {
     return (
-      <Router history={hashHistory}>
-        <Route path='/' component={Container}>
-          <IndexRoute component={HomePage}/>
-          <Route path='/taskdetail/:taskID' component={TaskDetail}/>
-          <Route path='/create' component={Create}/>
-          <Route path='*' component={NotFound} />
-        </Route>
-      </Router>
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path='/' component={Container}>
+            <IndexRoute component={TaskList}/>
+            <Route path='/taskdetail/:taskID' component={TaskDetail}/>
+            <Route path='/create' component={Create}/>
+            <Route path='*' component={NotFound} />
+          </Route>
+        </Router>
+      </Provider>
     )
   }
 }

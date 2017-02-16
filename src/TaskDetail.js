@@ -23,10 +23,10 @@ class TaskDetail extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		taskList : state.taskListReducer
+		taskList : state
 	}
 }
 
-const HomeContainer = connect()(TaskDetail);
+const HomeContainer = connect(mapStateToProps)(TaskDetail);
 
 export default HomeContainer;

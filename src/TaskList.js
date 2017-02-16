@@ -1,29 +1,30 @@
-import { combineReducers } from 'redux'
+import React, { Component } from 'react'
+import {render} from 'react-dom'
+import {Link} from 'react-router'
 
-import CREATE_NEW_TASK from './CreateAction';
+import { connect } from 'react-redux';
 
-var taskID = 0;
-
-function taskListReducer(state = TASKLIST, action) {
-  switch (action.type) {
-    case CREATE_NEW_TASK:
-      // New ID
-      taskID += 1;
-      // New Task
-      const newTask = {taskID: taskID, 
-    		  			name: action.payload.taskObj.name, 
-    		  			createdDate: action.payload.taskObj.createdDate, 
-    		  			effort: action.payload.taskObj.effort, 
-    		  			status: action.payload.taskObj.status};
-      return {
-        ...state,
-        newTask
-      }
-    default:
-      return state
+class TaskList extends Component {
+  render() {
+    const taskList = this.props.taskList;
+    const taskListRender = taskList.map(task => <li key={task.taskID}><Link to={`/taskdetail/${task.taskID}`}>{task.name}</Link></li>)
+    return (
+      <div>
+        <ul>
+          {taskListRender}
+        </ul>
+      </div>
+    )
   }
 }
 
-export default createStore(combineReducers({
-  taskListReducer
-});
+const mapStateToProps = (state) => {
+  return {
+    taskList: state
+  }
+}
+
+const TaskListContainer = connect(mapStateToProps)(TaskList);
+
+
+export default TaskListContainer;
