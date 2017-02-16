@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 import TaskDetail from './TaskDetail'
 import TaskList from './TaskList'
-import Create from './Create'
+import TaskPage from './TaskPage'
 import store from './TaskStore'
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
           <Route path='/' component={Container}>
             <IndexRoute component={TaskList}/>
             <Route path='/taskdetail/:taskID' component={TaskDetail}/>
-            <Route path='/create' component={Create}/>
+            <Route path='/create' component={TaskPage}/>
             <Route path='*' component={NotFound} />
           </Route>
         </Router>

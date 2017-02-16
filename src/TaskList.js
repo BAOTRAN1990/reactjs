@@ -23,8 +23,8 @@ class TaskList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    taskList: state.listOfTasks,
-    totalEffort: state.totalEffort
+    taskList: state.taskReducers.listOfTasks,
+    totalEffort: state.taskReducers.totalEffort
   }
 }
 

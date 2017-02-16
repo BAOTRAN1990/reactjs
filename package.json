@@ -19,12 +19,14 @@
   },
   "homepage": "https://github.com/BAOTRAN1990/reactjs#readme",
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "history": "^1.17.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-router": "^1.0.3",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-form": "^6.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
