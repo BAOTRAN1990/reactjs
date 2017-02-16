@@ -13,6 +13,9 @@ class TaskList extends Component {
         <ul>
           {taskListRender}
         </ul>
+        <div>
+          <h2>Total effort: {this.props.totalEffort}</h2>
+        </div>
       </div>
     )
   }
@@ -20,7 +23,8 @@ class TaskList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    taskList: state
+    taskList: state.listOfTasks,
+    totalEffort: state.totalEffort
   }
 }
 

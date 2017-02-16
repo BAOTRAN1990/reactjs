@@ -23,7 +23,7 @@ class TaskDetail extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		taskList : state
+		taskList : state.listOfTasks
 	}
 }
 
