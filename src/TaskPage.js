@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {render} from 'react-dom'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import TaskForm from './TaskForm'
 import createNewTask from './CreateAction'
@@ -18,7 +19,7 @@ class TaskPage extends React.Component {
     const actionObj = createNewTask(newTaskObj);
     this.props.dispatch(actionObj);
     // navigate to home page after creating
-    //this.props.router.push('/');
+    this.props.router.push('/');
   }
 
   render() {
@@ -28,6 +29,6 @@ class TaskPage extends React.Component {
   }
 }
 
-const TaskPageContainer = connect()(TaskPage);
+const TaskPageContainer = withRouter(connect()(TaskPage));
 
 export default TaskPageContainer;
