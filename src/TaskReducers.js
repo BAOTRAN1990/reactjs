@@ -8,7 +8,7 @@ var taskList = {
       name: 'Default task',
       createdDate: '16/02/2017',
       effort: 0,
-      status: 'Not start'
+      status: false
     }
   ]
 };
@@ -21,7 +21,8 @@ export default function taskReducers(state = taskList, action) {
       // New ID
       taskID += 1;
       // New Task
-      const newTask = {taskID: taskID, name: action.taskObj.name, createdDate: action.taskObj.createdDate, effort: action.taskObj.effort, status: action.taskObj.status};
+      const newTask = {...action.taskObj, taskID: taskID};
+      newTask.status = newTask.status === undefined ? false : true;
       return {
         totalEffort: state.totalEffort + parseInt(newTask.effort),
         listOfTasks: [...state.listOfTasks, newTask]

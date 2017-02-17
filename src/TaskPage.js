@@ -9,11 +9,13 @@ import createNewTask from './CreateAction'
 class TaskPage extends React.Component {
 
   handleSubmit(values) {
-    console.log(this.props);
     // Get values from Input Form
 	  let newTaskObj = {};
 	  newTaskObj.name = values.name;
-	  newTaskObj.createdDate = values.createdDate;
+    // handle date format
+    let createdDate = new Date(values.createdDate);
+	  newTaskObj.createdDate = (createdDate.getDate() + '/' + (createdDate.getMonth() + 1) + '/' + createdDate.getFullYear());
+    
 	  newTaskObj.effort = values.effort;
     newTaskObj.status = values.status;
     const actionObj = createNewTask(newTaskObj);

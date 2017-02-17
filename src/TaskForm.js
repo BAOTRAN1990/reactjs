@@ -1,30 +1,17 @@
 import React, { Component } from 'react'
 import {render} from 'react-dom'
 import { Field, reduxForm } from 'redux-form';
+import {TextField, Checkbox, DatePicker} from 'redux-form-material-ui'
 
 class TaskForm extends Component {
-
   render () {
-    console.log(this.props);
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <Field name="name" component="input" type="text"/>
-        </div>
-        <div>
-          <label htmlFor="createdDate">Created Date</label>
-          <Field name="createdDate" component="input" type="text"/>
-        </div>
-        <div>
-          <label htmlFor="effort">Effort</label>
-          <Field name="effort" component="input" type="text"/>
-        </div>
-        <div>
-          <label htmlFor="status">Status</label>
-          <Field name="status" component="input" type="text"/>
-        </div>
+        <Field name="name" component={TextField} hintText="Name"/>
+        <Field name="createdDate" component={DatePicker} hintText="Created Date"/>
+        <Field name="effort" component={TextField} hintText="Effort"/>
+        <Field name="status" component={Checkbox} label="Completed"/>
         <button type="submit">Submit</button>
       </form>
 		);
