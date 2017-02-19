@@ -7,7 +7,6 @@ class TaskDetail extends Component {
   render() {
     const {taskID} = this.props.routeParams;
     let selectedTask = {...(this.props.taskList.find(t => t.taskID == taskID))};
-    console.log(selectedTask);
     selectedTask.status = selectedTask.status === false ? 'Incomplete' : 'Completed';
 
     return (
