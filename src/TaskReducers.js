@@ -1,4 +1,4 @@
-import { CREATE_NEW_TASK } from './CreateAction';
+import { CREATE_NEW_TASK, UPDATE_TASK_STATUS } from './TaskActions';
 
 var taskList = {
   totalEffort: 0,
@@ -27,6 +27,19 @@ export default function taskReducers(state = taskList, action) {
         totalEffort: state.totalEffort + parseInt(newTask.effort),
         listOfTasks: [...state.listOfTasks, newTask]
       };
+    case UPDATE_TASK_STATUS:
+      // clone list of listOfTasks
+      let listOfTasks = [...state.listOfTasks];
+      listOfTasks.map(task => {
+        if(task.taskID == action.taskObj.taskID){
+          task.status = true;
+        }
+        return task;
+      });
+      return {
+        totalEffort: state.totalEffort,
+        listOfTasks
+      }
     default:
       return state;
   }

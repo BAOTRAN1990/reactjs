@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 import TaskForm from './TaskForm'
-import createNewTask from './CreateAction'
+import createNewTask from './TaskActions'
 
 class TaskPage extends React.Component {
 
