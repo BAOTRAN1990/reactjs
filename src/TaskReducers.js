@@ -1,4 +1,4 @@
-import { CREATE_NEW_TASK, UPDATE_TASK_STATUS } from './TaskActions';
+import { CREATE_NEW_TASK, UPDATE_TASK_STATUS, DELETE_TASK } from './TaskActions';
 
 var taskList = {
   totalEffort: 0,
@@ -39,6 +39,20 @@ export default function taskReducers(state = taskList, action) {
       return {
         totalEffort: state.totalEffort,
         listOfTasks
+      }
+    case DELETE_TASK:
+      let totalEffort = 0;
+      let newListOfTasks = state.listOfTasks.filter(task => {
+        if(task.taskID !== action.taskID){
+          totalEffort = totalEffort + task.effort;
+          return true;
+        } else {
+          return false;
+        }
+      });
+      return {
+        totalEffort: totalEffort,
+        listOfTasks: newListOfTasks
       }
     default:
       return state;

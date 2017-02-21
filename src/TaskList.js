@@ -4,7 +4,19 @@ import {Link} from 'react-router'
 import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton'
 
+import {deleteTask} from './TaskActions'
+
 class TaskList extends Component {
+  constructor(props){
+    super(props);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
+  }
+  
+  handleDeleteTask(taskID){
+    const actionObj = deleteTask(taskID);
+    this.props.dispatch(actionObj);
+  }
+
   render() {
     const taskList = this.props.taskList;
     const taskListRender = taskList.map(function(task) { 
@@ -15,11 +27,11 @@ class TaskList extends Component {
           return (
             <li key={task.taskID}>
                 <Link to={`/taskdetail/${task.taskID}`}>{task.name}</Link>
-                <IconButton><span className="material-icons">delete</span></IconButton>
+                <IconButton onClick={() => this.handleDeleteTask(task.taskID)}><span className="material-icons">delete</span></IconButton>
             </li>
           );
         }
-    });
+    }, this);
     return (
       <div>
         <ul>
