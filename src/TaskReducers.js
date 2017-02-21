@@ -24,7 +24,7 @@ export default function taskReducers(state = taskList, action) {
       const newTask = {...action.taskObj, taskID: taskID};
       newTask.status = newTask.status === undefined ? false : true;
       return {
-        totalEffort: state.totalEffort + parseInt(newTask.effort),
+        totalEffort: state.totalEffort + newTask.effort,
         listOfTasks: [...state.listOfTasks, newTask]
       };
     case UPDATE_TASK_STATUS:

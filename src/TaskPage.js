@@ -16,7 +16,7 @@ class TaskPage extends React.Component {
     let createdDate = new Date(values.createdDate);
 	  newTaskObj.createdDate = (createdDate.getDate() + '/' + (createdDate.getMonth() + 1) + '/' + createdDate.getFullYear());
     
-	  newTaskObj.effort = values.effort;
+	  newTaskObj.effort = parseInt(values.effort);
     newTaskObj.status = values.status;
     const actionObj = createNewTask(newTaskObj);
     this.props.dispatch(actionObj);
